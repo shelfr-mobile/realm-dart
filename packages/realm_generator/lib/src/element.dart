@@ -44,6 +44,13 @@ extension AstNodeEx on AstNode {
 }
 
 extension ElementEx on Element {
+  // analyzer >= 9 removed `Element.isSynthetic` from the public API. An element
+  // is synthetic iff the non-synthetic element that caused it is a *different*
+  // element (e.g. a synthetic getter -> its field; a synthetic constructor ->
+  // its enclosing class). For a non-synthetic element `nonSynthetic` returns
+  // the element itself.
+  bool get isSynthetic => !identical(this, nonSynthetic);
+
   FileSpan? get _shortSpan {
     try {
       return spanForElement(this) as FileSpan;
