@@ -1,0 +1,5 @@
+
+# Native binaries, downloaded by `realm install`
+android/src/main/cpp/lib/
+ios/realm_dart.xcframework/
+ios/realm_version.txt
